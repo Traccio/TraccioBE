@@ -17,6 +17,14 @@
     "noImplicitAny": true,
     "strictBindCallApply": true,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": true
-  }
+    "noFallthroughCasesInSwitch": true,
+    // aliases
+    "paths": {
+      "~domain/*": ["src/Domain/*"],
+      "~decorators": ["src/Shared/Decorators/index"],
+      "~pipes": ["src/Shared/Pipes/index"],
+      "~_types/*": ["src/Infrastructure/_Types/*"],
+      "~_utils/*": ["src/Infrastructure/_Utils/*"]
+    }
+  },
 }
