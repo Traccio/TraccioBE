@@ -1,0 +1,26 @@
+echo "Checking branch name 🍡";
+echo ""
+
+# branch name from git cli
+BRANCH_NAME=$(git branch --show-current)
+
+# validate branch name
+if 
+  ! [[ "$BRANCH_NAME" =~ ^(feature|fix|config|hotfix|release)\/[A-Za-z0-9\-]{1,30}$ ]] && 
+  ! [[ "$BRANCH_NAME" =~ ^(develop|main)$ ]]
+then
+  # wrong branch name case
+  echo "❌ error:"
+  echo "branch name not valid !";
+  echo ""
+  echo "💡 hint:"
+  echo "the branch format is: 'type/description'"
+  echo "types: feature, fix, config, hotfix, release"
+  echo "description: from 1 to 30 characters from 'a-z', 'A-Z', '0-9' and '-'"
+  echo ""
+  exit 1;
+fi
+
+echo "Checking message 💬";
+
+pnpx commitlint --edit $1

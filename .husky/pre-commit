@@ -1,0 +1,12 @@
+# TODO: check email provider @futura-dev.com
+
+# TODO: check branch naming convention
+# TODO: check commit message convention
+
+# check build before commit
+echo "Running build 📦";
+pnpm build;
+
+# check build before commit;
+echo "Running lint 👀 and prettify 🌈";
+pnpm lint

@@ -1,0 +1,39 @@
+echo "Checking branch name 🍡";
+echo ""
+
+# source: https://git-scm.com/docs/githooks
+# A flag indicating whether the checkout was a branch checkout (changing branches, flag=1) or a file checkout (retrieving a file from the index, flag=0)
+CHECKOUT_TYPE=$3
+
+# branch name from git cli
+BRANCH_NAME=$(git branch --show-current)
+
+if [ "$CHECKOUT_TYPE" -eq "1" ]
+then
+
+  # allowed
+  # feature/
+  # fix/
+  # config/
+  # hotfix/
+  # release/
+  if 
+    [[ "$BRANCH_NAME" =~ ^(feature|fix|config|hotfix|release)\/[A-Za-z0-9\-]{1,30}$ ]] || 
+    [[ "$BRANCH_NAME" =~ ^(develop|main)$ ]]
+  then
+    exit 0; 
+  fi
+
+  # wrong branch case
+  echo "💣 warning:"
+  echo "branch name not valid !";
+  echo ""
+  echo "💡 hint:"
+  echo "the branch format is: 'type/description' or 'develop' or 'main'"
+  echo "types: feature, fix, config, hotfix, release"
+  echo "description: from 1 to 30 characters from 'a-z', 'A-Z', '0-9' and '-'"
+  echo ""
+  exit 0;
+fi
+
+exit 0;
