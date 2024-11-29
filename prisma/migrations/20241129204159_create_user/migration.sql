@@ -5,7 +5,7 @@ CREATE TYPE "UserStatus" AS ENUM ('ACTIVE', 'INACTIVE');
 CREATE TABLE "User" (
     "Id" TEXT NOT NULL,
     "Status" "UserStatus" NOT NULL DEFAULT 'ACTIVE',
-    "Email" TEXT NOT NULL,
+    "Username" TEXT NOT NULL,
     "Password" TEXT NOT NULL,
     "CreatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "UpdatedAt" TIMESTAMP(3) NOT NULL,
@@ -14,4 +14,4 @@ CREATE TABLE "User" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_Email_key" ON "User"("Email");
+CREATE UNIQUE INDEX "User_Username_key" ON "User"("Username");

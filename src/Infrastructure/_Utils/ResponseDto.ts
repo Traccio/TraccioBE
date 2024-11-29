@@ -1,10 +1,10 @@
 import { HttpStatus } from '@nestjs/common';
-import { ErrorCode } from '@_types/ErrorCode';
+import { ErrorCode } from '~_types/ErrorCode';
 import {
   ErrorResponseDTO,
   PagedResponseDTO,
   SuccessResponseDTO
-} from '@_types/ResponseDto';
+} from '~_types/ResponseDto';
 
 export const buildSuccessResponse = <T>(data: T): SuccessResponseDTO<T> => {
   return {

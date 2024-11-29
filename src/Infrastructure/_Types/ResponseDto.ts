@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { ErrorCode } from '@_types/ErrorCode';
+import { ErrorCode } from '~_types/ErrorCode';
 
 // Paged Command
 export interface PagedCommand {
