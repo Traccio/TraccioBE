@@ -1,4 +1,4 @@
-import { TypeUnionFromConst } from '~_types/UtilsTypes';
+import { IsoString, TypeUnionFromConst } from '~_types/UtilsTypes';
 
 export type TokenPayload = {
   iat: number;
@@ -17,6 +17,8 @@ export const TokenType = {
 
 export interface Token {
   type: TokenType;
+  isExpired: boolean;
+  expiration: IsoString;
   asString: string;
   payload: TokenPayload;
 }

@@ -22,15 +22,10 @@ export class GenerateAccessTokenUseCase {
     });
 
     const verifiedToken = await this.verifyTokenUseCase.run({
-      secret: Env.ACCESS_TOKEN_SIGN_KEY,
       tokenType: TokenType.ACCESS_TOKEN,
       token
     });
 
-    return {
-      type: verifiedToken.type,
-      asString: token,
-      payload: verifiedToken.payload
-    };
+    return verifiedToken;
   }
 }

@@ -1,12 +1,12 @@
 import { HttpStatus } from '@nestjs/common';
 import { ErrorCode } from '~_types/ErrorCode';
 import {
-  ErrorResponseDTO,
-  PagedResponseDTO,
-  SuccessResponseDTO
+  ErrorResponseDto,
+  PagedResponseDto,
+  SuccessResponseDto
 } from '~_types/ResponseDto';
 
-export const buildSuccessResponse = <T>(data: T): SuccessResponseDTO<T> => {
+export const buildSuccessResponse = <T>(data: T): SuccessResponseDto<T> => {
   return {
     outcome: true,
     data
@@ -18,7 +18,7 @@ export const buildErrorResponse = (input: {
   message?: string | null;
   errorCode?: ErrorCode;
   meta?: Record<PropertyKey, unknown>;
-}): ErrorResponseDTO => {
+}): ErrorResponseDto => {
   return {
     outcome: false,
     error: {
@@ -39,6 +39,6 @@ export const buildPagedResponseDTO = <T extends readonly any[]>(
     totalItems: number;
     totalPages: number;
   }
-): PagedResponseDTO<T> => {
+): PagedResponseDto<T> => {
   return { outcome: true, data: data, pagination: pagination };
 };

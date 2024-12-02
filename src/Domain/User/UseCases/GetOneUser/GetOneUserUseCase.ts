@@ -5,7 +5,7 @@ import { UserPersistencePort } from '~domain/User/Ports/UserPersistencePort';
 import { Inject } from '@nestjs/common';
 
 @UseCase
-export class GetOneUnserUseCase {
+export class GetOneUserUseCase {
   constructor(
     @Inject('UserPersistencePort')
     private readonly userPersistence: UserPersistencePort

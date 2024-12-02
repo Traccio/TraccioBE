@@ -1,7 +1,7 @@
 import * as crypto from 'node:crypto';
 import { UseCase } from '~decorators';
 import { SignInCommand } from './SignInCommand';
-import { GetOneUnserUseCase } from '~domain/User/UseCases/GetOneUser/GetOneUserUseCase';
+import { GetOneUserUseCase } from '~domain/User/UseCases/GetOneUser/GetOneUserUseCase';
 import { SignInData } from '../Auth';
 import { GenerateAccessTokenUseCase } from '~domain/Token/UseCases/GenerateAccessToken/GenerateAccessTokenUseCase';
 import { GenerateRefreshTokenUseCase } from '~domain/Token/UseCases/GenerateRefreshToken/GenerateRefreshTokenUseCase';
@@ -10,7 +10,7 @@ import { GenerateIDTokenUseCase } from '~domain/Token/UseCases/GenerateIDToken/G
 @UseCase
 export class SignInUseCase {
   constructor(
-    private readonly getOneUserUseCase: GetOneUnserUseCase,
+    private readonly getOneUserUseCase: GetOneUserUseCase,
     private readonly generateAccessTokenUseCase: GenerateAccessTokenUseCase,
     private readonly generateRefreshTokenUseCase: GenerateRefreshTokenUseCase,
     private readonly generateIDTokenUseCase: GenerateIDTokenUseCase
