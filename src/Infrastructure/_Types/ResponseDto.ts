@@ -8,11 +8,11 @@ export interface PagedCommand {
 }
 
 // ResponseType ( tipo da tornare al frontend generico )
-export interface SuccessResponseDTO<D> {
+export interface SuccessResponseDto<D> {
   outcome: true;
   data: D | null;
 }
-export interface ErrorResponseDTO {
+export interface ErrorResponseDto {
   outcome: false;
   error: {
     status: HttpStatus;
@@ -34,7 +34,7 @@ export interface Paged<D extends readonly any[]> {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface PagedResponseDTO<D extends readonly any[]> {
+export interface PagedResponseDto<D extends readonly any[]> {
   outcome: true;
   data: D;
   pagination: {
@@ -45,4 +45,4 @@ export interface PagedResponseDTO<D extends readonly any[]> {
   };
 }
 
-export type ResponseDTO<D> = SuccessResponseDTO<D> | ErrorResponseDTO;
+export type ResponseDto<D> = SuccessResponseDto<D> | ErrorResponseDto;

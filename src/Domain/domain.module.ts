@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SignInUseCase } from './Auth/UseCases/SignIn/SignInUseCase';
-import { GetOneUnserUseCase } from './User/UseCases/GetOneUser/GetOneUserUseCase';
+import { GetOneUserUseCase } from './User/UseCases/GetOneUser/GetOneUserUseCase';
 import { PersistenceModule } from 'src/Persistence/persistence.module';
 import { GenerateAccessTokenUseCase } from './Token/UseCases/GenerateAccessToken/GenerateAccessTokenUseCase';
 import { GenerateIDTokenUseCase } from './Token/UseCases/GenerateIDToken/GenerateIDTokenUseCase';
@@ -11,7 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
 
 // UseCases
 const authUseCases = [SignInUseCase];
-const userUseCases = [GetOneUnserUseCase];
+const userUseCases = [GetOneUserUseCase];
 const tokenUseCases = [
   GenerateAccessTokenUseCase,
   GenerateIDTokenUseCase,

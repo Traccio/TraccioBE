@@ -1,10 +1,13 @@
 import { Controller, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { Public, BodyZod } from '~decorators';
-import { ResponseDTO } from '~_types/ResponseDto';
+import { SuccessResponseDto } from '~_types/ResponseDto';
 import { buildSuccessResponse } from '~_utils/ResponseDto';
 import { SignInUseCase } from '~domain/Auth/UseCases/SignIn/SignInUseCase';
-import { SignInDto } from './Dto';
+import { SignInDto, TokenDetailsResponseDTO } from './Dto';
+import { TokenType } from '~domain/Token/Token';
+import { CookieNames } from './_Constants';
+import { setCookieInResponse } from '~_utils/Cookie';
 
 @Controller('auth')
 export class AuthController {
@@ -21,24 +24,18 @@ export class AuthController {
       passwords: body.passwords
     });
 
-    res.cookie('access-token', signInData.accessToken, {
-      sameSite: 'none',
-      path: '/',
-      domain: 'localhost',
-      httpOnly: false,
-      secure: false
-    });
-    res.cookie('refresh-token', signInData.refreshToken, {
-      sameSite: 'none',
-      path: '/',
-      domain: 'localhost',
-      httpOnly: false,
-      secure: false
-    });
+    setCookieInResponse(res, [
+      [CookieNames.COOKIE_ACCESS_TOKEN_NAME, signInData.accessToken.asString],
+      [CookieNames.COOKIE_REFRESH_TOKEN_NAME, signInData.refreshToken.asString]
+    ]);
 
-    const response: ResponseDTO<SignInDto.AuthResponseDTO> =
+    const response: SuccessResponseDto<TokenDetailsResponseDTO> =
       buildSuccessResponse({
-        idToken: signInData.idToken.asString
+        type: TokenType.ID_TOKEN,
+        isExpired: signInData.idToken.isExpired,
+        expiration: signInData.idToken.expiration,
+        asString: signInData.idToken.asString,
+        payload: signInData.idToken.payload
       });
 
     res.send(response);

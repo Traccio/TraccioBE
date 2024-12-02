@@ -22,15 +22,10 @@ export class GenerateRefreshTokenUseCase {
     });
 
     const verifiedToken = await this.verifyTokenUseCase.run({
-      secret: Env.REFRESH_TOKEN_SIGN_KEY,
       tokenType: TokenType.REFRESH_TOKEN,
       token
     });
 
-    return {
-      type: verifiedToken.type,
-      asString: token,
-      payload: verifiedToken.payload
-    };
+    return verifiedToken;
   }
 }
