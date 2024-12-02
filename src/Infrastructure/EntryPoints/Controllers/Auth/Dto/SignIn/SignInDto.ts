@@ -6,8 +6,3 @@ export const signInRequestBodyDtoSchema = z.object({
   passwords: z.tuple([z.string(), z.string()])
 });
 export type SignInBody = z.infer<typeof signInRequestBodyDtoSchema>;
-
-// Response
-export interface AuthResponseDTO {
-  idToken: string;
-}

@@ -24,7 +24,9 @@
       "~decorators": ["src/Shared/Decorators/index"],
       "~pipes": ["src/Shared/Pipes/index"],
       "~_types/*": ["src/Infrastructure/_Types/*"],
-      "~_utils/*": ["src/Infrastructure/_Utils/*"]
+      "~_utils/*": ["src/Infrastructure/_Utils/*"],
+      "~exceptions": ["src/Infrastructure/Exceptions/Classes/index"],
+      "~exceptions/Filters": ["src/Infrastructure/Exceptions/Filters/index"],
     }
   },
 }

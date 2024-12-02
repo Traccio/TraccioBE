@@ -29,15 +29,10 @@ export class GenerateIDTokenUseCase {
     });
 
     const verifiedToken = await this.verifyTokenUseCase.run({
-      secret: Env.ID_TOKEN_SIGN_KEY,
       tokenType: TokenType.ID_TOKEN,
       token
     });
 
-    return {
-      type: verifiedToken.type,
-      asString: token,
-      payload: verifiedToken.payload
-    };
+    return verifiedToken;
   }
 }
