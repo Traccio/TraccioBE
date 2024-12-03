@@ -9,7 +9,7 @@ export class SignTokenUseCase {
   async run(command: SignTokenCommand): Promise<string> {
     const signedToken = await this.jwt.signAsync(command.payload || {}, {
       secret: command.secret,
-      expiresIn: '1h',
+      expiresIn: command.expireInSeconds,
       subject: command.userId,
       audience: 'aud',
       issuer: 'iss'

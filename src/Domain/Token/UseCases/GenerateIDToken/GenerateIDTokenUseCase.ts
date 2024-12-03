@@ -13,7 +13,10 @@ export class GenerateIDTokenUseCase {
   ) {}
 
   async run(command: GenerateIDTokenCommand): Promise<Token> {
+    const IdTokenExpiration5MinutesInSeconds = 5 * 60;
+
     const token = await this.signTokenUseCase.run({
+      expireInSeconds: IdTokenExpiration5MinutesInSeconds,
       secret: Env.ID_TOKEN_SIGN_KEY,
       userId: command.user.Id,
       payload: {

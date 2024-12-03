@@ -50,7 +50,7 @@ export class JwtAuthGuard implements CanActivate {
         return reject(
           new HttpTraccioException(HttpStatus.UNAUTHORIZED, {
             description: 'No Token provided !',
-            errorCode: ErrorCode._ERR_NO_TOKEN_PROVIDED
+            errorCode: ErrorCode._ERR_NO_ACCESS_TOKEN_PROVIDED
           })
         );
 

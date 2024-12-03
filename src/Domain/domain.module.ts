@@ -8,15 +8,18 @@ import { GenerateRefreshTokenUseCase } from './Token/UseCases/GenerateRefreshTok
 import { SignTokenUseCase } from './Token/UseCases/SignToken/SignTokenUseCase';
 import { VerifyTokenUseCase } from './Token/UseCases/VerifyToken/VerifyTokenUseCase';
 import { JwtModule } from '@nestjs/jwt';
+import { DecodeTokenUseCase } from './Token/UseCases/DecodeToken/DecodeTokenUseCase';
+import { RefreshAccessUseCase } from './Auth/UseCases/RefreshAccess/RefreshAccessUseCase';
 
 // UseCases
-const authUseCases = [SignInUseCase];
+const authUseCases = [SignInUseCase, RefreshAccessUseCase];
 const userUseCases = [GetOneUserUseCase];
 const tokenUseCases = [
   GenerateAccessTokenUseCase,
   GenerateIDTokenUseCase,
   GenerateRefreshTokenUseCase,
   SignTokenUseCase,
+  DecodeTokenUseCase,
   VerifyTokenUseCase
 ];
 

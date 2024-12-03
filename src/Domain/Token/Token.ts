@@ -1,6 +1,7 @@
 import { IsoString, TypeUnionFromConst } from '~_types/UtilsTypes';
 
 export type TokenPayload = {
+  tokenType: TokenType;
   iat: number;
   exp: number;
   aud: string;

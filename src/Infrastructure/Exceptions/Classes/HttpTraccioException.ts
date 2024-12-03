@@ -9,19 +9,19 @@ type HttpTraccioExceptionOptions = {
 
 export class HttpTraccioException extends Error {
   private readonly _status: HttpStatus;
-  private readonly _options: HttpTraccioExceptionOptions;
+  private readonly _options: HttpTraccioExceptionOptions | null;
 
-  constructor(status: HttpStatus, options: HttpTraccioExceptionOptions) {
-    super(options.description);
+  constructor(status: HttpStatus, options?: HttpTraccioExceptionOptions) {
+    super(options?.description);
     this._status = status;
-    this._options = options;
+    this._options = options || null;
   }
 
   get status(): HttpStatus {
     return this._status;
   }
 
-  get options(): HttpTraccioExceptionOptions {
+  get options(): HttpTraccioExceptionOptions | null {
     return this._options;
   }
 
