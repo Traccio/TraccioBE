@@ -1,26 +1,31 @@
 import { Response } from 'express';
 
+type CookieValue = string | null;
+
 const _isArrayOfArray = (
-  input: [string, string] | [string, string][]
-): input is [string, string][] => {
+  input: [string, CookieValue] | [string, CookieValue][]
+): input is [string, CookieValue][] => {
   return Array.isArray(input[0]) && typeof input[0] !== 'string';
 };
 
 export const setCookieInResponse = (
   res: Response,
-  cookie: [string, string] | [string, string][]
+  cookie: [string, CookieValue] | [string, CookieValue][]
 ): void => {
-  const cookies: [string, string][] = _isArrayOfArray(cookie)
+  const cookies: [string, CookieValue][] = _isArrayOfArray(cookie)
     ? cookie
     : [cookie];
 
-  for (const c of cookies) {
-    res.cookie(c[0], c[1], {
+  for (const [name, value] of cookies) {
+    const mustDeleteCookie = value === null;
+
+    res.cookie(name, value, {
       sameSite: 'none',
       path: '/',
       domain: 'localhost',
       httpOnly: false,
-      secure: false
+      secure: false,
+      expires: mustDeleteCookie ? new Date() : undefined
     });
   }
 };
