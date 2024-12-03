@@ -80,6 +80,17 @@ export class AuthController {
   }
 
   @Public()
+  @Post('sign-out')
+  async signOut(@Res() res: Response): Promise<void> {
+    setCookieInResponse(res, [
+      [CookieNames.COOKIE_ACCESS_TOKEN_NAME, null],
+      [CookieNames.COOKIE_REFRESH_TOKEN_NAME, null]
+    ]);
+
+    res.send();
+  }
+
+  @Public()
   @Post('sign-in')
   async signIn(
     @BodyZod(SignInDto.signInRequestBodyDtoSchema) body: SignInDto.SignInBody,
