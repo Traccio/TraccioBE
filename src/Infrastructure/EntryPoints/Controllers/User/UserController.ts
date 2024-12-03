@@ -1,12 +1,12 @@
 import { Controller, Get, HttpStatus, Param, Request } from '@nestjs/common';
 import { AuthRequest } from '~_types/AuthRequest';
 import { GetOneUserUseCase } from '~domain/User/UseCases/GetOneUser/GetOneUserUseCase';
-import { UserResponseDto } from './Dto';
-import { FromUserToUserResponseDto } from './Mapper/UserResponseMapper';
 import { SuccessResponseDto } from '~_types/ResponseDto';
 import { buildSuccessResponse } from '~_utils/ResponseDto';
 import { HttpTraccioException } from '~exceptions';
 import { ErrorCode } from '~_types/ErrorCode';
+import { UserResponseDto } from './Dto';
+import { FromUserToUserResponseDto } from './Mapper/UserResponseMapper';
 
 @Controller('users')
 export class UserController {
