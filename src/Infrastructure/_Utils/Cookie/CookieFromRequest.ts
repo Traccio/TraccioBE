@@ -8,7 +8,7 @@ export const getCookiesFromRequest = (
   const rawCookieHeader: string | undefined = headers.cookie;
   if (rawCookieHeader === undefined) return null;
 
-  const cookies = rawCookieHeader.split(';');
+  const cookies = rawCookieHeader.split(';').map((i) => i.trim());
   for (const cookie of cookies) {
     const [name, value]: string[] = cookie.split('=');
 

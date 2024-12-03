@@ -26,9 +26,9 @@ export class HttpTraccioExceptionFilter implements ExceptionFilter {
 
     const status: HttpStatus = exception.status;
     const message: string = exception.message;
-    const cause: Error | undefined = exception.options.cause;
+    const cause: Error | undefined = exception.options?.cause;
     const stack: string | undefined = exception.stack;
-    const errorCode = exception.options.errorCode;
+    const errorCode = exception.options?.errorCode;
 
     const response = buildErrorResponse({
       status,

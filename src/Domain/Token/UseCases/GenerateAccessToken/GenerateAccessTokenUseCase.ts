@@ -13,7 +13,10 @@ export class GenerateAccessTokenUseCase {
   ) {}
 
   async run(command: GenerateAccessTokenCommand): Promise<Token> {
+    const AccessTokenExpiration5MinutesInSeconds = 5 * 60;
+
     const token = await this.signTokenUseCase.run({
+      expireInSeconds: AccessTokenExpiration5MinutesInSeconds,
       secret: Env.ACCESS_TOKEN_SIGN_KEY,
       userId: command.userId,
       payload: {
