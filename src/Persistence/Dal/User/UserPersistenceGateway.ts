@@ -6,10 +6,10 @@ import {
 import { User } from '~domain/User/User';
 import { PrismaEntities } from 'src/Persistence/Clients/PrismaTraccio/PrismaEntities';
 import { PrismaTraccioClient } from 'src/Persistence/Clients/PrismaTraccio/PrismaTraccioClient';
-import { FromUserEntityToUser } from './UserPersistenceMapper';
-import { Injectable } from '@nestjs/common';
+import { FromUserEntityToUserModel } from './UserPersistenceMapper';
+import { PersistenceGateway } from 'src/Shared/Decorators/PersistenceGateway/PersistenceGatewayDecorator';
 
-@Injectable()
+@PersistenceGateway
 export class UserPersistenceGateway implements UserPersistencePort {
   constructor(private readonly prisma: PrismaTraccioClient) {}
 
@@ -20,6 +20,6 @@ export class UserPersistenceGateway implements UserPersistencePort {
         : { Username: input.username };
 
     const user = await this.prisma.user.findUnique({ where });
-    return user && FromUserEntityToUser(user);
+    return user && FromUserEntityToUserModel(user);
   }
 }

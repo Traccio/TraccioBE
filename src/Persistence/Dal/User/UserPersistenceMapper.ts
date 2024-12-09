@@ -1,7 +1,7 @@
 import { User } from '~domain/User/User';
 import { UserEntity } from './UserEntity';
 
-export const FromUserEntityToUser = (source: UserEntity): User => {
+export const FromUserEntityToUserModel = (source: UserEntity): User => {
   const fullPassword = source.Password;
   const [Password, Salt] = fullPassword.split('.');
 

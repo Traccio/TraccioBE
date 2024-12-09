@@ -6,7 +6,7 @@ import { buildSuccessResponse } from '~_utils/ResponseDto';
 import { HttpTraccioException } from '~exceptions';
 import { ErrorCode } from '~_types/ErrorCode';
 import { UserResponseDto } from './Dto';
-import { FromUserToUserResponseDto } from './Mapper/UserResponseMapper';
+import { FromUserModelToUserResponseDto } from './Mapper/UserResponseMapper';
 
 @Controller('users')
 export class UserController {
@@ -27,7 +27,7 @@ export class UserController {
         errorCode: ErrorCode._ERR_USER_NOT_FOUND
       });
 
-    return buildSuccessResponse(FromUserToUserResponseDto(user));
+    return buildSuccessResponse(FromUserModelToUserResponseDto(user));
   }
 
   @Get(':id')
@@ -45,6 +45,6 @@ export class UserController {
         errorCode: ErrorCode._ERR_USER_NOT_FOUND
       });
 
-    return buildSuccessResponse(FromUserToUserResponseDto(user));
+    return buildSuccessResponse(FromUserModelToUserResponseDto(user));
   }
 }
