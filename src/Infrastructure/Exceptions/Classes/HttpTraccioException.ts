@@ -1,3 +1,4 @@
+import { Nullable } from '~_types/Nullable';
 import { HttpStatus } from '@nestjs/common';
 import { ErrorCode } from '~_types/ErrorCode';
 
@@ -9,7 +10,7 @@ type HttpTraccioExceptionOptions = {
 
 export class HttpTraccioException extends Error {
   private readonly _status: HttpStatus;
-  private readonly _options: HttpTraccioExceptionOptions | null;
+  private readonly _options: Nullable<HttpTraccioExceptionOptions>;
 
   constructor(status: HttpStatus, options?: HttpTraccioExceptionOptions) {
     super(options?.description);
@@ -21,7 +22,7 @@ export class HttpTraccioException extends Error {
     return this._status;
   }
 
-  get options(): HttpTraccioExceptionOptions | null {
+  get options(): Nullable<HttpTraccioExceptionOptions> {
     return this._options;
   }
 

@@ -1,3 +1,4 @@
+import { Nullable } from '~_types/Nullable';
 import {
   GetOneUserInput,
   UserPersistencePort
@@ -12,7 +13,7 @@ import { Injectable } from '@nestjs/common';
 export class UserPersistenceGateway implements UserPersistencePort {
   constructor(private readonly prisma: PrismaTraccioClient) {}
 
-  async getOne(input: GetOneUserInput): Promise<User | null> {
+  async getOne(input: GetOneUserInput): Promise<Nullable<User>> {
     const where: PrismaEntities.Prisma.UserWhereUniqueInput =
       input.__by === 'userId'
         ? { Id: input.userId }

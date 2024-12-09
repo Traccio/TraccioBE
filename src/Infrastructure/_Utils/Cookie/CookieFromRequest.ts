@@ -1,9 +1,10 @@
+import { Nullable } from '~_types/Nullable';
 import { Request } from 'express';
 
 export const getCookiesFromRequest = (
   req: Request,
   cookieName: string
-): string | null => {
+): Nullable<string> => {
   const headers = req.headers;
   const rawCookieHeader: string | undefined = headers.cookie;
   if (rawCookieHeader === undefined) return null;
