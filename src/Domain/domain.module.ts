@@ -12,11 +12,18 @@ import { DecodeTokenUseCase } from './Token/UseCases/DecodeToken/DecodeTokenUseC
 import { RefreshAccessUseCase } from './Auth/UseCases/RefreshAccess/RefreshAccessUseCase';
 import { FindAllCategoriesUseCase } from './Category/UseCases/FindAllCategories/FindAllCategoriesUseCase';
 import { CreateCategoryUseCase } from './Category/UseCases/CreateCategory/CreateCategoryUseCase';
+import { GetOneCategoryUseCase } from './Category/UseCases/GetOneCategory/GetOneCategoryUseCase';
+import { UpdateCategoryUseCase } from './Category/UseCases/UpdateCategory/UpdateCategoryUseCase';
 
 // UseCases
 const authUseCases = [SignInUseCase, RefreshAccessUseCase];
 const userUseCases = [GetOneUserUseCase];
-const categoryUseCases = [FindAllCategoriesUseCase, CreateCategoryUseCase];
+const categoryUseCases = [
+  GetOneCategoryUseCase,
+  FindAllCategoriesUseCase,
+  CreateCategoryUseCase,
+  UpdateCategoryUseCase
+];
 const tokenUseCases = [
   GenerateAccessTokenUseCase,
   GenerateIDTokenUseCase,
