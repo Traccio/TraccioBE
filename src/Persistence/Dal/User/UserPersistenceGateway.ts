@@ -1,24 +1,25 @@
+import { Nullable } from '~_types/Nullable';
 import {
   GetOneUserInput,
   UserPersistencePort
 } from '~domain/User/Ports/UserPersistencePort';
 import { User } from '~domain/User/User';
+import { PersistenceGateway } from '~decorators';
 import { PrismaEntities } from 'src/Persistence/Clients/PrismaTraccio/PrismaEntities';
 import { PrismaTraccioClient } from 'src/Persistence/Clients/PrismaTraccio/PrismaTraccioClient';
-import { FromUserEntityToUser } from './UserPersistenceMapper';
-import { Injectable } from '@nestjs/common';
+import { FromUserEntityToUserModel } from './UserPersistenceMapper';
 
-@Injectable()
+@PersistenceGateway
 export class UserPersistenceGateway implements UserPersistencePort {
   constructor(private readonly prisma: PrismaTraccioClient) {}
 
-  async getOne(input: GetOneUserInput): Promise<User | null> {
+  async getOne(input: GetOneUserInput): Promise<Nullable<User>> {
     const where: PrismaEntities.Prisma.UserWhereUniqueInput =
       input.__by === 'userId'
         ? { Id: input.userId }
         : { Username: input.username };
 
     const user = await this.prisma.user.findUnique({ where });
-    return user && FromUserEntityToUser(user);
+    return user && FromUserEntityToUserModel(user);
   }
 }

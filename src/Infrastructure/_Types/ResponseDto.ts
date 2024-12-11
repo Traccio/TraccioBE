@@ -1,3 +1,4 @@
+import { Nullable } from '~_types/Nullable';
 import { HttpStatus } from '@nestjs/common';
 import { ErrorCode } from '~_types/ErrorCode';
 
@@ -10,13 +11,13 @@ export interface PagedCommand {
 // ResponseType ( tipo da tornare al frontend generico )
 export interface SuccessResponseDto<D> {
   outcome: true;
-  data: D | null;
+  data: Nullable<D>;
 }
 export interface ErrorResponseDto {
   outcome: false;
   error: {
     status: HttpStatus;
-    message: string | null;
+    message: Nullable<string>;
     errorCode: ErrorCode;
     meta: Record<PropertyKey, unknown>;
   };

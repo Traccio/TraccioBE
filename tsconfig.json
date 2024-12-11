@@ -21,8 +21,8 @@
     // aliases
     "paths": {
       "~domain/*": ["src/Domain/*"],
-      "~decorators": ["src/Shared/Decorators/index"],
-      "~pipes": ["src/Shared/Pipes/index"],
+      "~decorators": ["src/_Shared/Decorators/index"],
+      "~pipes": ["src/_Shared/Pipes/index"],
       "~_types/*": ["src/Infrastructure/_Types/*"],
       "~_utils/*": ["src/Infrastructure/_Utils/*"],
       "~exceptions": ["src/Infrastructure/Exceptions/Classes/index"],

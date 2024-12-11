@@ -1,6 +1,7 @@
+import { Nullable } from '~_types/Nullable';
 import { Response } from 'express';
 
-type CookieValue = string | null;
+type CookieValue = Nullable<string>;
 
 const _isArrayOfArray = (
   input: [string, CookieValue] | [string, CookieValue][]

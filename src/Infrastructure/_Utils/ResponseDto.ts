@@ -1,3 +1,4 @@
+import { Nullable } from '~_types/Nullable';
 import { HttpStatus } from '@nestjs/common';
 import { ErrorCode } from '~_types/ErrorCode';
 import {
@@ -15,7 +16,7 @@ export const buildSuccessResponse = <T>(data: T): SuccessResponseDto<T> => {
 
 export const buildErrorResponse = (input: {
   status: HttpStatus;
-  message?: string | null;
+  message?: Nullable<string>;
   errorCode?: ErrorCode;
   meta?: Record<PropertyKey, unknown>;
 }): ErrorResponseDto => {

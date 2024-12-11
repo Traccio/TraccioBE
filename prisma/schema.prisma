@@ -28,3 +28,34 @@ model User {
   CreatedAt DateTime @default(now())
   UpdatedAt DateTime @updatedAt
 }
+
+enum CategoryType {
+  INPUT
+  OUTPUT
+}
+
+enum CategoryValueType {
+  NUMERIC
+  BOOLEAN
+  RANGE
+  DURATION
+  PERCENTAGE
+  COUNT
+  LIST
+  TIMESTAMP
+  CATEGORICAL
+  BINARY
+  SCORE
+}
+
+model Categories {
+  Id            String            @id @default(uuid())
+  Name          String
+  Icon          String?
+  Color         String
+  Type          CategoryType
+  ValueType     CategoryValueType
+  MinValue      Int?
+  MaxValue      Int?
+  AllowedValues String?
+}

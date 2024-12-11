@@ -6,9 +6,12 @@ import {
   HttpTraccioExceptionFilter,
   PrismaExceptionFilter
 } from '~exceptions/Filters';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
+
+  app.useGlobalPipes(new ValidationPipe());
 
   app.useGlobalFilters(new GenericExceptionFilter());
   app.useGlobalFilters(new PrismaExceptionFilter());

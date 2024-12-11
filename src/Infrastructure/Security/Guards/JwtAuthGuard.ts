@@ -9,7 +9,7 @@ import {
   UnauthorizedException
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { IS_PUBLIC_KEY } from 'src/Shared/Decorators/Public/PublicDecorator';
+import { IS_PUBLIC_KEY } from '~decorators';
 import { AuthRequest } from '~_types/AuthRequest';
 import { TokenType } from '~domain/Token/Token';
 import { VerifyTokenUseCase } from '~domain/Token/UseCases/VerifyToken/VerifyTokenUseCase';

@@ -1,3 +1,4 @@
+import { Nullable } from '~_types/Nullable';
 import { User } from '../User';
 
 // GetOne
@@ -12,5 +13,5 @@ type GetOneUserByIdInput = {
 export type GetOneUserInput = GetOneUserByUsernameInput | GetOneUserByIdInput;
 
 export interface UserPersistencePort {
-  getOne(input: GetOneUserInput): Promise<User | null>;
+  getOne(input: GetOneUserInput): Promise<Nullable<User>>;
 }

@@ -1,7 +1,7 @@
 import { UseCase } from '~decorators';
 import { RefreshAccessCommand } from './RefreshAccessCommand';
 import { GetOneUserUseCase } from '~domain/User/UseCases/GetOneUser/GetOneUserUseCase';
-import { SignInData } from '../Auth';
+import { SignInData } from '../../Auth';
 import { GenerateAccessTokenUseCase } from '~domain/Token/UseCases/GenerateAccessToken/GenerateAccessTokenUseCase';
 import { GenerateRefreshTokenUseCase } from '~domain/Token/UseCases/GenerateRefreshToken/GenerateRefreshTokenUseCase';
 import { GenerateIDTokenUseCase } from '~domain/Token/UseCases/GenerateIDToken/GenerateIDTokenUseCase';
