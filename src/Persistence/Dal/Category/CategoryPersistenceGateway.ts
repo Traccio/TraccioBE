@@ -1,5 +1,5 @@
 import { PrismaTraccioClient } from 'src/Persistence/Clients/PrismaTraccio/PrismaTraccioClient';
-import { PersistenceGateway } from 'src/Shared/Decorators/PersistenceGateway/PersistenceGatewayDecorator';
+import { PersistenceGateway } from '~decorators';
 import { Category } from '~domain/Category/Category';
 import {
   CategoryPersistencePort,

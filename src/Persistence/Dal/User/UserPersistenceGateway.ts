@@ -4,10 +4,10 @@ import {
   UserPersistencePort
 } from '~domain/User/Ports/UserPersistencePort';
 import { User } from '~domain/User/User';
+import { PersistenceGateway } from '~decorators';
 import { PrismaEntities } from 'src/Persistence/Clients/PrismaTraccio/PrismaEntities';
 import { PrismaTraccioClient } from 'src/Persistence/Clients/PrismaTraccio/PrismaTraccioClient';
 import { FromUserEntityToUserModel } from './UserPersistenceMapper';
-import { PersistenceGateway } from 'src/Shared/Decorators/PersistenceGateway/PersistenceGatewayDecorator';
 
 @PersistenceGateway
 export class UserPersistenceGateway implements UserPersistencePort {
